@@ -3,10 +3,13 @@ import Item from "./Item";
 
 function ShoppingList({ items }) {
   const [selectedCategory, setSelectedCategory] = useState('All');
+  console.log(items)
 
+  
   const handleCategory = (e) => {
     setSelectedCategory(e.target.value)
   }
+
 
   const toDisplay = items.filter(item => {
     if(selectedCategory === 'All'){
@@ -16,9 +19,7 @@ function ShoppingList({ items }) {
     return item.category === selectedCategory;
   })
 
-  const onAddChart = () => {
-
-  }
+ 
 
   return (
     <div className="ShoppingList">
@@ -32,7 +33,7 @@ function ShoppingList({ items }) {
       </div>
       <ul className="Items">
         {toDisplay.map((item) => (
-          <Item key={item.id} onAddChart={onAddChart} name={item.name} category={item.category} />
+          <Item key={item.id} item={item}  name={item.name} category={item.category} />
         ))}
       </ul>
     </div>
